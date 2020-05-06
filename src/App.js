@@ -2,16 +2,33 @@ import React from "react";
 import "./App.css";
 import PoemsContainer from "./PoemsContainer";
 import NewPoemForm from "./NewPoemForm";
+const poemUrl = "http://localhost:6001/poems"
 //Sam starting
 class App extends React.Component {
+  state = {
+    poems: [],
+    show: false,
+    read: false
+  }
+
+  componentDidMount(){
+    fetch(poemUrl)
+      .then(res => res.json())
+      .then(data => this.setState({ poems: data}))
+  }
+
+  showPoems = ()=>{
+    this.setState({show: !this.state.show})
+  }
+
   render() {
     return (
       <div className="app">
         <div className="sidebar">
-          <button>Show/hide new poem form</button>
-          {false && <NewPoemForm />}
+          <button onClick={this.showPoems}>Show/hide new poem form</button>
+          {this.state.show && <NewPoemForm />}
         </div>
-        <PoemsContainer />
+        <PoemsContainer poems={this.state.poems}/>
       </div>
     );
   }
