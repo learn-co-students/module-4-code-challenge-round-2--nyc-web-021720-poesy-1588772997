@@ -1,6 +1,22 @@
 import React from "react";
 
 class Poem extends React.Component {
+  state = {
+    read: false
+  }
+
+  onClick = () => {
+    this.setState({ read: !this.state.read })
+  }
+
+  deleteButton = () => {
+    console.log(this.props.data.id)
+    fetch(`http://localhost:3000/poems/${this.props.data.id}`, {
+      method: "DELETE",
+      header: { "content-type": "application/json", "accept": "application/json" }
+    })
+  }
+
   render() {
     return (
       <div>
@@ -9,7 +25,8 @@ class Poem extends React.Component {
         <p>
           <strong>- By {this.props.data.author}</strong>
         </p>
-        <button>Mark as read</button>
+        <button onClick={() => this.onClick()}>{this.state.read ? "Read, Bro" : "Mark as read"}</button>
+        <button onClick={() => this.deleteButton()}>Delete</button>
       </div>
     );
   }

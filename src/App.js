@@ -6,9 +6,10 @@ import NewPoemForm from "./NewPoemForm";
 class App extends React.Component {
   state = {
     poems: [],
-    title: null,
-    author: null,
-    content: null
+    title: "",
+    author: "",
+    content: "",
+    favorites: []
   }
 
   getPoems = () => {
@@ -29,7 +30,7 @@ class App extends React.Component {
     e.preventDefault()
     console.log(this.state)
     fetch("http://localhost:3000/poems", {
-      method: postMessage,
+      method: "POST",
       headers: { "content-type": "application/json", "accept": "application/json" },
       body: JSON.stringify({
         "author": this.state.author,
@@ -39,10 +40,10 @@ class App extends React.Component {
     })
       .then(resp => resp.json())
       .then(poem => this.setState({
-        poems: [poem, ...this.state.poems],
-        title: null,
-        author: null,
-        content: null
+        poems: [...this.state.poems, poem],
+        title: "",
+        author: "",
+        content: ""
       }))
   }
 
