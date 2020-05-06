@@ -2,13 +2,15 @@ import React from "react";
 import "./App.css";
 import PoemsContainer from "./PoemsContainer";
 import NewPoemForm from "./NewPoemForm";
+import FavoriteContainer from './FavoriteContainer'
 
 const PoemsURL = 'http://localhost:3000/poems'
 class App extends React.Component {
 
   state = {
     poems: [],
-    display: false
+    display: false,
+    favorites: []
   }
 
   componentDidMount(){
@@ -50,6 +52,12 @@ class App extends React.Component {
       poems: [...this.state.poems, poem]
     }))
   }
+
+  addFavorite = (poem) => {
+    this.setState({
+      favorites: [...this.state.favorites, poem]
+    })
+  }
   
 
   render() {
@@ -59,7 +67,10 @@ class App extends React.Component {
           <button onClick={this.clickHandle}>Show/hide new poem form.</button>
           {this.state.display && <NewPoemForm handleSubmit={this.handleSubmit}/>}
         </div>
-        <PoemsContainer poems={this.state.poems}/>
+        <PoemsContainer poems={this.state.poems} addFavorite={this.addFavorite}/>
+        <div>
+        <FavoriteContainer favorite={this.state.favorites} />
+        </div>
       </div>
     );
   }

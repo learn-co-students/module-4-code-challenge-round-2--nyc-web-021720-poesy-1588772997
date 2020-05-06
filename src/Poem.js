@@ -20,6 +20,7 @@ class Poem extends React.Component {
         <strong>- By Author: {this.props.poem.author}</strong>
         </p>
         {this.state.read ? <button onClick={this.handleClick}>Read</button> : <button onClick={this.handleClick}>Mark as read</button>}
+        <button onClick={() => this.props.addFavorite(this.props.poem.id)}>Favorite</button>
       </div>
     );
   }

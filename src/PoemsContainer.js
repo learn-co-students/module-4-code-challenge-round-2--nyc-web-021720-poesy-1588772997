@@ -6,7 +6,7 @@ class PoemsContainer extends React.Component {
     return (
       <div className="poems-container">
         {
-          this.props.poems.map(poem => <Poem poem={poem} key={poem.id}/>)
+          this.props.poems.map(poem => <Poem addFavorite={this.props.addFavorite} poem={poem} key={poem.id}/>)
         }
       </div>
     );
