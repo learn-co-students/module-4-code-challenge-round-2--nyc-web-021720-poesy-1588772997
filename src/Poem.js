@@ -3,14 +3,14 @@ import React from "react";
 class Poem extends React.Component {
   state = {
     read : false,
-    status : "Mark as read"
+    status : "Mark as Read"
   }
 
   readPoem = () => {
     if(this.state.read === false){
-      this.setState({read: true, status: "Mark as unread"})
+      this.setState({read: true, status: "Mark as Unread"})
     }else{
-      this.setState({read: false, status : "Mark as read"})
+      this.setState({read: false, status : "Mark as Read"})
     }
     }
   
