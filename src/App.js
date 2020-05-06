@@ -21,9 +21,9 @@ class App extends React.Component {
    this.setState({ showPoemForm: !this.state.showPoemForm})
   }
 
-  handleChange = event => {
-    this.setState({ formInput: event.target.value })
-   }
+  // handleChange = event => {
+  //   this.setState({ formInput: event.target.value })
+  //  }
   
 
   render() {
@@ -32,7 +32,12 @@ class App extends React.Component {
       <div className="app">
         <div className="sidebar">
           <button onClick={this.handleClick}>Show/hide new poem form</button>
-          {this.state.showPoemForm ? <NewPoemForm handleChange={this.handleChange} /> : null}
+          {this.state.showPoemForm ? <NewPoemForm 
+            poems={this.state.poems} 
+            formInput={this.state.formInput} 
+            handleChange={this.handleChange} />
+            : null
+            }
         </div>
         <PoemsContainer poems={this.state.poems}/>
       </div>
