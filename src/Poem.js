@@ -4,10 +4,10 @@ class Poem extends React.Component {
   render() {
     return (
       <div>
-        <h3>Title</h3>
-        <p>Content</p>
+        <h3>{this.props.data.title}</h3>
+        <p>{this.props.data.content}</p>
         <p>
-          <strong>- By Author</strong>
+          <strong>- By {this.props.data.author}</strong>
         </p>
         <button>Mark as read</button>
       </div>
