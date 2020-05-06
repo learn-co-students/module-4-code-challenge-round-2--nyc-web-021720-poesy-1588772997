@@ -2,7 +2,7 @@ import React from "react";
 
 class NewPoemForm extends React.Component {
 	state = {
-		newPoem: [],
+		newPoem: {},
 	};
 
 	handleChange = (e) => {
@@ -31,6 +31,7 @@ class NewPoemForm extends React.Component {
 			.then((poem) => {
 				this.props.addnewPoem(poem);
 			});
+		this.setState({ newPoem: {} });
 	};
 
 	render() {
