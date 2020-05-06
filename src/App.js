@@ -5,7 +5,10 @@ import NewPoemForm from "./NewPoemForm";
 
 class App extends React.Component {
   state = {
-    poems: []
+    poems: [],
+    title: null,
+    author: null,
+    content: null
   }
 
   getPoems = () => {
@@ -22,12 +25,37 @@ class App extends React.Component {
     this.setState({ show: !this.state.show })
   }
 
+  handleSubmit = e => {
+    e.preventDefault()
+    console.log(this.state)
+    fetch("http://localhost:3000/poems", {
+      method: postMessage,
+      headers: { "content-type": "application/json", "accept": "application/json" },
+      body: JSON.stringify({
+        "author": this.state.author,
+        "content": this.state.content,
+        "title": this.state.title
+      })
+    })
+      .then(resp => resp.json())
+      .then(poem => this.setState({
+        poems: [poem, ...this.state.poems],
+        title: null,
+        author: null,
+        content: null
+      }))
+  }
+
+  handleChange = e => {
+    this.setState({ [e.target.name]: e.target.value })
+  }
+
   render() {
     return (
       <div className="app">
         <div className="sidebar">
           <button onClick={() => this.formButton()}>Show/hide new poem form</button>
-          {this.state.show && <NewPoemForm handleChange={this.handleChange} handleSubmit={this.handleSubmit} />}
+          {this.state.show && <NewPoemForm handleSubmit={this.handleSubmit} handleChange={this.handleChange} />}
         </div>
         <PoemsContainer poems={this.state.poems} />
       </div>
