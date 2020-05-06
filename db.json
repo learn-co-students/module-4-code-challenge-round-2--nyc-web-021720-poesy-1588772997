@@ -35,6 +35,18 @@
       "author": "",
       "content": "This happened",
       "id": 6
+    },
+    {
+      "title": "Cats",
+      "author": "Steve",
+      "content": "Steve likes \ncats",
+      "id": 7
+    },
+    {
+      "title": "Twelve Kittens",
+      "author": "Rebecca",
+      "content": "1 \nKittens\n2",
+      "id": 8
     }
   ]
 }
