@@ -2,15 +2,22 @@ import React from "react";
 
 class NewPoemForm extends React.Component {
 	state = {
-		newPoem: {},
+		newPoem: {
+			author: "",
+			title: "",
+			content: "",
+		},
 	};
 
 	handleChange = (e) => {
-		this.setState({
-			newPoem: {
-				[e.target.name]: e.target.value,
+		this.setState(
+			({
+				newPoem: {
+					[e.target.name]: e.target.value,
+				},
 			},
-		});
+			() => console.log)
+		);
 	};
 	handleSubmit = (e) => {
 		e.preventDefault();
@@ -35,26 +42,25 @@ class NewPoemForm extends React.Component {
 	};
 
 	render() {
-		let { author, title, content } = this.state.newPoem;
-
+		console.log(this.state.newPoem.title);
 		return (
 			<form className="new-poem-form" onSubmit={this.handleSubmit}>
 				<input
 					placeholder="Title"
 					name="Title"
-					value={title}
+					value={this.state.newPoem.title}
 					onChange={this.handleChange}
 				/>
 				<input
 					placeholder="Author"
 					name="Author"
-					value={author}
+					value={this.state.newPoem.author}
 					onChange={this.handleChange}
 				/>
 				<textarea
 					placeholder="Write your masterpiece here..."
 					name="Content"
-					value={content}
+					value={this.state.newPoem.content}
 					onChange={this.handleChange}
 					rows={10}
 				/>

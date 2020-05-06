@@ -7,7 +7,7 @@ class App extends React.Component {
 	state = {
 		poems: [],
 		hideForm: false,
-		newPoem: [],
+		// newPoem: [],
 	};
 	componentDidMount() {
 		fetch("http://localhost:6001/poems")
@@ -19,13 +19,13 @@ class App extends React.Component {
 			});
 	}
 
-	handleChange = (e) => {
-		this.setState({
-			newPoem: {
-				[e.target.name]: e.target.value,
-			},
-		});
-	};
+	// handleChange = (e) => {
+	// 	this.setState({
+	// 		newPoem: {
+	// 			[e.target.name]: e.target.value,
+	// 		},
+	// 	});
+	// };
 
 	// handleSubmit = (e) => {
 	// 	e.preventDefault();
