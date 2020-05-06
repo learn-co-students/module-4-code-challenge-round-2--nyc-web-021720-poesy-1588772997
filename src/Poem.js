@@ -13,6 +13,19 @@ class Poem extends React.Component {
       this.setState({read: false, status : "Mark as Read"})
     }
     }
+
+    // deletePoem = (event) => {
+    //   fetch(`http://localhost:6001/poems/${event.target.id}`,{
+    //     method: 'Delete',
+    //     headers: {
+    //       'Content-Type' : 'application/json',
+    //       Accept : 'application.json'
+    //     },
+    //     body: JSON.stringify({})
+    //   })
+    //   .then(res => res.json())
+    //   .then(res => console.log(res))
+    // }
   
   render() {
     return (
@@ -23,6 +36,7 @@ class Poem extends React.Component {
           <strong>- {this.props.author}</strong>
         </p>
         <button onClick={() => this.readPoem()}>{this.state.status}</button>
+        {/* <button id={this.props.id} onClick={(event) => this.deletePoem(event)}>Delete Poem</button> */}
       </div>
     );
   }

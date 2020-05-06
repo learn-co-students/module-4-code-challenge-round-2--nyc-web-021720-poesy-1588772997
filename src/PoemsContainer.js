@@ -12,13 +12,16 @@ class PoemsContainer extends React.Component {
     .then(poems => this.setState({poems}))
   }
 
+
+
+
   render() {
     
     return (
       <div className="poems-container">
         {
           this.state.poems.map(poem => 
-            <Poem key={poem.id} title={poem.title} author={poem.author} content={poem.content}/>)
+            <Poem key={poem.id} title={poem.title} author={poem.author} content={poem.content} poem={poem}/>)
         }
       </div>
     );
