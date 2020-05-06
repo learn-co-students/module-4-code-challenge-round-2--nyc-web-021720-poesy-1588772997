@@ -9,6 +9,10 @@ class Poem extends React.Component {
     this.setState({ read: !this.state.read })
   }
 
+  handleFavoritedClick = () => {
+    this.props.onFavorited(this.props.poem)
+  }
+
   render() {
     let colorObj = {color: 'green'}   //differenctiate when it is clicked
     if (this.state.read) {
@@ -21,7 +25,7 @@ class Poem extends React.Component {
         <p>
           <strong>- By {this.propts.poem}</strong>
         </p>
-        <button>onClick={this.handleClick}</button>
+        <button>onClick={this.handlehandleFavoritedClick}</button>
       </div>
     );
   }

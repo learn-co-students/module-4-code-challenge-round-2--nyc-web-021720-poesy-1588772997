@@ -5,7 +5,8 @@ import NewPoemForm from "./NewPoemForm";
 
 class App extends React.Component {
   state = {
-    poems: []
+    poems: [],
+    favorites: []
   }
 
 componentDidMount() {
@@ -16,13 +17,30 @@ componentDidMount() {
   })
 }
 
-// handleaddedPoem = (data) => {
-//   const addedPoem ={
-//     ...data,
-//     author: this.state.title
-//   }
-// }
+handleaAddedPoem = (dataPoem) => {
+  const addedPoem ={
+    ...dataPoem,
+    author: this.state.title
+  }
+}
 
+fetch('http://localhost:6001/poems', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    Application: 'application/json'
+  },
+  body: JSON.stringify(addedPoem)
+})
+  .then(response => response.json())
+  .then(addNewPoem => {
+    this.setState({poems: [...poem]})
+  }
+
+
+handledFavorited = (poem) => {
+  this.setState({ favorites: [...this.state.favorites, poem]})
+}
 
 
   render() {
@@ -30,9 +48,9 @@ componentDidMount() {
       <div className="app">
         <div className="sidebar">
           <button>Show/hide new poem form</button>
-          {false && <NewPoemForm />}
+          {false && <NewPoemForm addedPoem={this.handleaAddedPoem}/>}
         </div>
-        <PoemsContainer />
+        <PoemsContainer poems={this.state.favorites}/>
       </div>
     );
   }
