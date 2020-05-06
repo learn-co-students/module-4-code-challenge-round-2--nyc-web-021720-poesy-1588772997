@@ -21,12 +21,16 @@ class App extends React.Component {
     this.setState({show: !this.state.show})
   }
 
+  addPoems = (newPoem)=>{
+    this.setState({poems: [...this.state.poems, newPoem]})
+  }
+
   render() {
     return (
       <div className="app">
         <div className="sidebar">
           <button onClick={this.showPoems}>Show/hide new poem form</button>
-          {this.state.show && <NewPoemForm />}
+          {this.state.show && <NewPoemForm addPoems={this.addPoems}/>}
         </div>
         <PoemsContainer poems={this.state.poems}/>
       </div>
