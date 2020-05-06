@@ -8,7 +8,7 @@ class App extends React.Component {
     return (
       <div className="app">
         <div className="sidebar">
-          <button>Show/hide new poem form</button>
+          <button>Show/hide new poem form.</button>
           {false && <NewPoemForm />}
         </div>
         <PoemsContainer />
