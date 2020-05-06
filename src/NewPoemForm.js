@@ -2,26 +2,23 @@ import React from "react";
 
 class NewPoemForm extends React.Component {
 	state = {
-		newPoem: {
-			author: "",
-			title: "",
-			content: "",
-		},
+		author: "",
+		title: "",
+		content: "",
 	};
 
 	handleChange = (e) => {
 		this.setState(
-			({
-				newPoem: {
-					[e.target.name]: e.target.value,
-				},
+			{
+				[e.target.name]: e.target.value,
 			},
-			() => console.log)
+			() => console.log(this.state)
 		);
 	};
 	handleSubmit = (e) => {
 		e.preventDefault();
-		console.log(e.target.value);
+		console.log(e.target);
+		console.log("running");
 		fetch("http://localhost:6001/poems", {
 			method: "POST",
 			headers: {
@@ -29,9 +26,9 @@ class NewPoemForm extends React.Component {
 				Accepts: "application/json",
 			},
 			body: JSON.stringify({
-				author: e.target.value,
-				title: e.target.value,
-				content: e.target.value,
+				author: e.target.author.value,
+				title: e.target.title.value,
+				content: e.target.content.value,
 			}),
 		})
 			.then((response) => response.json())
@@ -42,25 +39,25 @@ class NewPoemForm extends React.Component {
 	};
 
 	render() {
-		console.log(this.state.newPoem.title);
+		let { author, title, content } = this.state;
 		return (
 			<form className="new-poem-form" onSubmit={this.handleSubmit}>
 				<input
 					placeholder="Title"
-					name="Title"
-					value={this.state.newPoem.title}
+					name="title"
+					value={title}
 					onChange={this.handleChange}
 				/>
 				<input
 					placeholder="Author"
-					name="Author"
-					value={this.state.newPoem.author}
+					name="author"
+					value={author}
 					onChange={this.handleChange}
 				/>
 				<textarea
 					placeholder="Write your masterpiece here..."
-					name="Content"
-					value={this.state.newPoem.content}
+					name="content"
+					value={content}
 					onChange={this.handleChange}
 					rows={10}
 				/>
