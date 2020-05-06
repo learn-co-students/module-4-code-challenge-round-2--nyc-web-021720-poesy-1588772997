@@ -9,7 +9,8 @@ class App extends React.Component {
     title: "",
     author: "",
     content: "",
-    favorites: []
+    favorites: [],
+    currentPoem: null
   }
 
   getPoems = () => {
@@ -51,12 +52,21 @@ class App extends React.Component {
     this.setState({ [e.target.name]: e.target.value })
   }
 
+  delete = e => {
+    fetch(`http://localhost:3000/poems/${e.target.id}}`, {
+      method: "DELETE",
+      header: { "content-type": "application/json", "accept": "application/json" }
+    })
+    this.getPoems()
+  }
+
   render() {
     return (
       <div className="app">
         <div className="sidebar">
           <button onClick={() => this.formButton()}>Show/hide new poem form</button>
-          {this.state.show && <NewPoemForm handleSubmit={this.handleSubmit} handleChange={this.handleChange} />}
+          {this.state.show && <NewPoemForm handleSubmit={this.handleSubmit} handleChange={this.handleChange}
+            title={this.state.title} content={this.state.content} author={this.state.author} />}
         </div>
         <PoemsContainer poems={this.state.poems} />
       </div>

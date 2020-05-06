@@ -26,7 +26,7 @@ class Poem extends React.Component {
           <strong>- By {this.props.data.author}</strong>
         </p>
         <button onClick={() => this.onClick()}>{this.state.read ? "Read, Bro" : "Mark as read"}</button>
-        <button onClick={() => this.deleteButton()}>Delete</button>
+        <button id={this.props.data.id} onClick={() => this.deleteButton()}>Delete</button>
       </div>
     );
   }
