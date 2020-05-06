@@ -8,11 +8,6 @@ class App extends React.Component {
   state = {
     poems: [],
     showPoemForm: false,
-    newPoem: {
-      title: '',
-      content: '',
-      author: ''
-    },
     read: false
   }
   componentDidMount() {
@@ -27,7 +22,7 @@ class App extends React.Component {
       <div className="app">
         <div className="sidebar">
           <button onClick={this.onNewPoemClick}>Show/hide new poem form</button>
-          {this.state.showPoemForm && <NewPoemForm handleNewPoem={this.handleNewPoem} newPoem={this.state.newPoem} />}
+          {this.state.showPoemForm && <NewPoemForm />}
         </div>
         <PoemsContainer renderButtonReadText toggleRead={this.toggleRead} read={this.state.read} poems={this.state.poems}/>
       </div>
@@ -44,16 +39,7 @@ class App extends React.Component {
     })
   }
 
-  handleNewPoem = (e) => {
-    // newState = {
-
-    // }
-    // this.setState((prevState) => {
-    //   newPoem: {
-    //     [...prevState, {e.target.placeholder: e.target.value}]
-    //   }
-    // })
-  }
+  
 }
 
 export default App;
