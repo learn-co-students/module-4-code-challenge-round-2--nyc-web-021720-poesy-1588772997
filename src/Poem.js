@@ -21,7 +21,7 @@ class Poem extends React.Component {
     //       'Content-Type' : 'application/json',
     //       Accept : 'application.json'
     //     },
-    //     body: JSON.stringify({})
+    //     body: JSON.stringify({ })
     //   })
     //   .then(res => res.json())
     //   .then(res => console.log(res))
