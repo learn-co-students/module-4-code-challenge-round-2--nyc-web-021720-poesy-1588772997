@@ -31,9 +31,9 @@ These are the routes you will need:
 
 As a user:
 
-1. When the app starts, I can see all currently created poems.
-2. I can show/hide the form to create new poems.
-3. I can create poems and they are still there when I refresh the page.
+[x]1. When the app starts, I can see all currently created poems.
+[x]2. I can show/hide the form to create new poems.
+[x]3. I can create poems and they are still there when I refresh the page.
 4. I can mark poems as read and see some visual difference when a poem has been read.
 
 ## Advanced Deliverables
