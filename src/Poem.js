@@ -1,15 +1,27 @@
 import React from "react";
 
 class Poem extends React.Component {
+  state = {
+    read: false
+  }
+
+  handleClick = () => {
+    this.setState({ read: !this.state.read })
+  }
+
   render() {
+    let colorObj = {color: 'green'}   //differenctiate when it is clicked
+    if (this.state.read) {
+      colorObj.color = 'blue'
+    }
     return (
-      <div>
-        <h3>Title</h3>
-        <p>Content</p>
+      <div onClick={this.handleClick} style={colorObj}>
+        <h3>{this.propts.poem.title}</h3>
+        <p>{this.propts.poem.content}</p>
         <p>
-          <strong>- By Author</strong>
+          <strong>- By {this.propts.poem}</strong>
         </p>
-        <button>Mark as read</button>
+        <button>onClick={this.handleClick}</button>
       </div>
     );
   }
