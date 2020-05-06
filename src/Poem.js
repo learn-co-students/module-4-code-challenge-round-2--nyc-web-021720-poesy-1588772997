@@ -10,7 +10,7 @@ class Poem extends React.Component {
         <p>
     <strong>- By Author: {this.props.poem.author}</strong>
         </p>
-        <button>Mark as read</button>
+        <button onClick={this.props.handleRead}>Mark as read</button>
       </div>
     );
   }

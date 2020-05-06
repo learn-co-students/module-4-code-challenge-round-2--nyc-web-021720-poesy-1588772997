@@ -25,6 +25,17 @@ class App extends React.Component {
     this.setState({poems: [...this.state.poems, newPoem]})
   }
 
+  handleRead = (e)=>{
+    this.setState({read: !this.state.read})
+    if(this.state.read ){
+      e.target.textContent = "Mark as read"
+    } 
+    else{
+      e.target.textContent = "Read"
+    }
+
+  }
+
   render() {
     return (
       <div className="app">
@@ -32,7 +43,7 @@ class App extends React.Component {
           <button onClick={this.showPoems}>Show/hide new poem form</button>
           {this.state.show && <NewPoemForm addPoems={this.addPoems}/>}
         </div>
-        <PoemsContainer poems={this.state.poems}/>
+        <PoemsContainer poems={this.state.poems} handleRead={this.handleRead}/>
       </div>
     );
   }
