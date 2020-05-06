@@ -5,20 +5,13 @@ class Poem extends React.Component {
 
   handleDelete=(id)=>{
    
-  let poemId=this.props.poem.find(poem => poem.id === id)
-  console.log(poemId)
-    fetch(`http://localhost:6001/poems/${poemId}`,{
-      method: "POST",
-      headers:{
-        "content-type" :"application/json",
-        accepts: "application/json"
-      },
-      body: JSON.stringify({
-          // title:this.state.title,
-          // author: this.state.author,
-          // content: this.state.content
-      })
-    })
+  
+    fetch(`http://localhost:6001/poems/${id}`,{
+      method: "DELETE",})
+      .then(resp =>  resp.json())
+      .then(result => this.setState({
+      
+      }))
   }
 
   
@@ -31,7 +24,7 @@ class Poem extends React.Component {
         <p>
     <strong>- {this.props.poem.author}</strong>
         </p>
-        <button onClick={this.handleDelete}>Mark as read</button>
+        <button onClick={(e)=>this.handleDelete(this.props.poem.id)}>Mark as read</button>
       </div>
     );
   }

@@ -33,6 +33,14 @@ class App extends React.Component {
     })
   }
 
+  deleteForm=(oldpeoms)=>{
+    this.setState({
+      poems:oldpeoms
+    })
+  }
+
+
+
   render() {
     // console.log(this.state)
     return (
