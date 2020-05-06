@@ -33,9 +33,12 @@ class App extends React.Component {
     })
   }
 
-  deleteForm=(oldpeoms)=>{
+  deleteForm=()=>{
+    // slicing the last index of the array 
+let form=this.state.poems.slice(0,this.state.poems.length-1)
+    
     this.setState({
-      poems:oldpeoms
+      poems:form
     })
   }
 
@@ -49,7 +52,7 @@ class App extends React.Component {
           <button onClick={()=>this.handleToggle()}>Show/hide new poem form</button>
           {this.state.toggle && <NewPoemForm addForm={this.addForm}/>}
         </div>
-        <PoemsContainer poems={this.state.poems}/>
+        <PoemsContainer poems={this.state.poems} deleteForm={this.deleteForm}/>
       </div>
     );
   }
