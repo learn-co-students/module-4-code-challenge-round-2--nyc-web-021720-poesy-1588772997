@@ -7,6 +7,7 @@ class App extends React.Component {
 	state = {
 		poems: [],
 		hideForm: false,
+		newPoem: [],
 	};
 	componentDidMount() {
 		fetch("http://localhost:6001/poems")
@@ -17,12 +18,28 @@ class App extends React.Component {
 				});
 			});
 	}
+
+	handleChange = (e) => {
+		this.setState(
+			{
+				newPoem: {
+					[e.target.name]: e.target.value,
+				},
+			},
+			() => console.log(this.state.newPoem)
+		);
+	};
 	render() {
 		return (
 			<div className="app">
 				<div className="sidebar">
 					<button>Show/hide new poem form</button>
-					{false && <NewPoemForm />}
+					{true && (
+						<NewPoemForm
+							newPoem={this.state.newPoem}
+							handleChange={this.handleChange}
+						/>
+					)}
 				</div>
 				<PoemsContainer poems={this.state.poems} />
 			</div>
